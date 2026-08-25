@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер подписок | Т-Стиль</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --t-yellow: #FFDD2D;
+            --t-yellow-hover: #F2D12B;
+            --t-bg: #F3F4F6;
+            --t-text: #1C1C1E;
+            --t-text-secondary: #8E8E93;
+            --t-card: #FFFFFF;
+            --t-danger: #FF3B30;
+            --t-success: #34C759;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--t-bg);
+            color: var(--t-text);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--t-bg);
+        }
+
+        header {
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h1 { font-weight: 700; font-size: 2.2rem; letter-spacing: -0.03em; }
+
+        .balance-badge {
+            background: var(--t-card);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            color: var(--t-text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .balance-badge:hover {
+            color: var(--t-danger);
+            background: #FFD6D6;
+        }
+
+        .card {
+            background: var(--t-card);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        h2 { font-size: 1.2rem; margin-bottom: 16px; font-weight: 500; }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            background: #F2F2F7;
+            border: 2px solid transparent;
+            padding: 16px;
+            border-radius: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--t-text);
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        input:focus {
+            background: var(--t-card);
+            border-color: var(--t-yellow);
+        }
+
+        button.primary {
+            background: var(--t-yellow);
+            color: var(--t-text);
+            border: none;
+            padding: 16px;
+            border-radius: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(255, 221, 45, 0.3);
+        }
+
+        button.primary:hover { background: var(--t-yellow-hover); transform: translateY(-2px); }
+        button.primary:active { transform: scale(0.96); }
+
+        .sub-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+
+        .sub-item {
+            background: var(--t-card);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sub-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 6px;
+            background: var(--t-yellow);
+            border-radius: 20px 0 0 20px;
+        }
+
+        .sub-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+        .sub-status { font-size: 0.85rem; font-weight: 500; color: var(--t-text-secondary); }
+        .sub-status.active { color: var(--t-success); }
+
+        .price-col {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .price { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+
+        .btn-icon {
+            background: #F2F2F7;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--t-text-secondary);
+        }
+
+        .btn-icon:hover {
+            background: #FFD6D6;
+            color: var(--t-danger);
+            transform: rotate(90deg);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--t-text-secondary);
+            font-weight: 500;
+        }
+
+        .hidden { display: none !important; }
+        
+        .link {
+            color: var(--t-text-secondary);
+            text-decoration: underline;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 16px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- ЭКРАН ВХОДА И РЕГИСТРАЦИИ -->
+        <div id="authScreen" class="hidden">
+            <header>
+                <h1 id="authTitle">Вход</h1>
+            </header>
+            <div class="card">
+                <div class="input-group">
+                    <input type="text" id="usernameInput" placeholder="Логин">
+                    <input type="password" id="passwordInput" placeholder="Пароль">
+                </div>
+                <button class="primary" id="authBtn" onclick="handleAuth()">Войти</button>
+                <a class="link" id="toggleAuth" onclick="toggleMode()">Нет аккаунта? Зарегистрироваться</a>
+            </div>
+        </div>
+
+        <!-- ГЛАВНЫЙ ЭКРАН (ПОДПИСКИ) -->
+        <div id="appScreen" class="hidden">
+            <header>
+                <h1>Подписки</h1>
+                <div class="balance-badge" onclick="logout()" title="Выйти из аккаунта">
+                    Выйти
+                </div>
+            </header>
+
+            <div class="card add-section">
+                <h2>Подключить новую</h2>
+                <div class="input-group">
+                    <input type="text" id="subName" placeholder="Сервис (например, Плюс)">
+                    <input type="number" id="subPrice" placeholder="Стоимость, ₽">
+                    <select id="subCycle" style="background: #F2F2F7; border: 2px solid transparent; padding: 16px; border-radius: 16px; font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--t-text); outline: none;">
+                        <option value="monthly">Ежемесячно</option>
+                        <option value="yearly">Ежегодно</option>
+                    </select>
+                </div>
+                <button class="primary" onclick="addSubscription()">Добавить</button>
+            </div>
+
+            <ul class="sub-list" id="subsList">
+                <!-- Сюда JavaScript будет подставлять подписки -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const API = 'http://127.0.0.1:8000';
+        let isLoginMode = true;
+        
+        // Функция для защиты от XSS (превращает спецсимволы в безопасный текст)
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+        
+        // При загрузке страницы пробуем загрузить подписки. 
+        // Браузер сам прикрепит HttpOnly Cookie к этому запросу!
+        window.onload = () => {
+            loadSubscriptions(); 
+        };
+
+        function showAuth() {
+            document.getElementById('authScreen').classList.remove('hidden');
+            document.getElementById('appScreen').classList.add('hidden');
+        }
+
+        function showApp() {
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('appScreen').classList.remove('hidden');
+        }
+
+        async function logout() {
+            // Чтобы удалить HttpOnly Cookie, нужно попросить об этом сервер
+            const res = await fetch(`${API}/logout`, { method: 'POST' });
+            if (res.ok) {
+                showAuth();
+            }
+        }
+
+        function toggleMode() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('authTitle').innerText = isLoginMode ? 'Вход' : 'Регистрация';
+            document.getElementById('authBtn').innerText = isLoginMode ? 'Войти' : 'Создать аккаунт';
+            document.getElementById('toggleAuth').innerText = isLoginMode ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти';
+        }
+
+        async function handleAuth() {
+            const u = document.getElementById('usernameInput').value;
+            const p = document.getElementById('passwordInput').value;
+            if (!u || !p) return alert("Введите логин и пароль");
+
+            if (isLoginMode) {
+                const formData = new URLSearchParams();
+                formData.append('username', u);
+                formData.append('password', p);
+
+                const res = await fetch(`${API}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+
+                if (res.ok) {
+                    // НАМ БОЛЬШЕ НЕ НУЖЕН localStorage! 
+                    // Сервер сам прислал куку, браузер ее сохранил и спрятал от JS.
+                    document.getElementById('passwordInput').value = '';
+                    showApp();
+                    loadSubscriptions(); 
+                } else {
+                    alert('Неверный логин или пароль');
+                }
+            } else {
+                const res = await fetch(`${API}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: u, password: p })
+                });
+
+                if (res.ok) {
+                    alert('Успешно! Теперь войдите со своим паролем.');
+                    toggleMode(); 
+                } else {
+                    const err = await res.json();
+                    alert(err.detail || 'Ошибка регистрации');
+                }
+            }
+        }
+
+        async function loadSubscriptions() {
+            // Обрати внимание: мы больше не прикрепляем headers: {'Authorization': ...}
+            // Браузер делает это за нас!
+            const res = await fetch(`${API}/subscriptions/`);
+
+            if (res.ok) {
+                showApp();
+                const subs = await res.json();
+                const list = document.getElementById('subsList');
+                list.innerHTML = '';
+                
+                if (subs.length === 0) {
+                    list.innerHTML = `<div class="empty-state">У вас пока нет активных подписок.</div>`;
+                    return;
+                }
+
+                subs.forEach(sub => {
+                    list.innerHTML += `
+                        <li class="sub-item">
+                            <div class="sub-info">
+                                <h3>${escapeHTML(sub.name)}</h3>
+                                <div class="sub-status active">${sub.billing_cycle === 'yearly' ? 'Ежегодно' : 'Ежемесячно'}</div>
+                            </div>
+                            <div class="price-col">
+                                <div class="price">${sub.price} ₽</div>
+                                <button class="btn-icon" onclick="deleteSubscription(${sub.id})" title="Отключить">
+                                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.4 14L0 12.6L5.6 7L0 1.4L1.4 0L7 5.6L12.6 0L14 1.4L8.4 7L14 12.6L12.6 14L7 8.4L1.4 14Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
+                    `;
+                });
+            } else if (res.status === 401) {
+                showAuth(); 
+            }
+        }
+
+        async function addSubscription() {
+            const name = document.getElementById('subName').value;
+            const price = parseFloat(document.getElementById('subPrice').value);
+            const cycle = document.getElementById('subCycle').value;
+            
+            if (!name || isNaN(price)) return;
+
+            const res = await fetch(`${API}/subscriptions/`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, price: price, billing_cycle: cycle, is_active: true })
+            });
+
+            if (res.ok) {
+                document.getElementById('subName').value = '';
+                document.getElementById('subPrice').value = '';
+                loadSubscriptions(); 
+            }
+        }
+
+        async function deleteSubscription(id) {
+            const res = await fetch(`${API}/subscriptions/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (res.ok) {
+                loadSubscriptions();
+            }
+        }
+    </script>
+</body>
+</html>
