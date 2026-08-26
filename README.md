@@ -1,38 +1,28 @@
-﻿# Backend & AI Engineering Portfolio
+﻿# Portfolio Projects Suite
 
-Репозиторий содержит практические проекты в области Backend-разработки (FastAPI), Telegram-автоматизации (Aiogram 3 / FSM) и прикладного машинного обучения.
+Практические проекты на Python: веб-сервис учета расходов и боты для автоматизации задач с базами данных SQLite.
 
 ---
 
-## Проекты в репозитории
+## Проекты
 
 ### 1. [Expense & Subscription Tracker](./expense-tracker)
-**Стек:** FastAPI, SQLModel (SQLAlchemy), SQLite, JWT (OAuth2 Password Bearer), Passlib (PBKDF2 SHA-256), Jinja2.
-- Веб-сервис для контроля подписок и персональных расходов с аутентификацией пользователей.
-- Хэширование паролей, сессии на HttpOnly Cookies и JWT-токенах.
-- Реляционная схема данных с внешними ключами и каскадной целостностью.
+**Стек:** Python, FastAPI, SQLite, Jinja2.
+- Веб-сервис для учета персональных расходов и регулярных подписок.
+- Хранение данных пользователей и истории транзакций в базе данных SQLite.
+- Веб-интерфейс на HTML-шаблонах Jinja2.
 
 ### 2. [Telegram Automation Suite](./tg-bots)
-**Стек:** Aiogram 3.x, Asyncio, FSM, SQLite, Aiohttp, Telegram Payments API.
-- SaaS-бот для автоматизации каналов: отложенный постинг с учётом часовых поясов, кастомный AlbumMiddleware для медиа-каруселей, монетизация и биллинг квот через ЮKassa.
-- Мультиплеерный интерактивный бот с инлайн-режимом для групп.
-
----
-
-## Связанные проекты
-
-### [Pet-Bank-RAG (Банковский AI-ассистент с мультимодальным OCR)](https://github.com/Lychqq/pet-bank-rag)
-**Стек:** LangChain, Google Gemini Vision, pgvector, PostgreSQL, Ragas, SentenceTransformers.
-- Корпоративный RAG-ассистент с Corrective RAG (CRAG) и гибридным поиском (Dense векторы + BM25).
-- Извлечение данных из сканов документов и паспортов через Gemini Vision с детерминированной валидацией (100% unit-test coverage).
-- Оценка качества поиска и генерации через метрики Ragas (Context Precision, Faithfulness).
+**Стек:** Python, Telegram Bot API, SQLite.
+- Бот для управления публикациями в каналах: отложенная отправка по расписанию, группировка медиа в альбомы и хранение настроек в SQLite.
+- Игровой интерактивный бот для групповых чатов.
 
 ---
 
 ## Технический стек
 
-- **Языки:** Python 3.10+, SQL (PostgreSQL, SQLite)
-- **Backend:** FastAPI, SQLModel, SQLAlchemy, Pydantic, Jinja2, Uvicorn
-- **Data Science & ML:** Pandas, NumPy, Scikit-Learn, LangChain, SentenceTransformers, pgvector, Ragas
-- **Асинхронность & Боты:** Aiogram 3, Asyncio, Aiohttp, FSM, Webhooks
-- **Инструменты:** Git, GitHub, Unit Testing (unittest/pytest), REST API
+- Язык программирования: Python 3 (структуры данных, ООП)
+- Алгоритмы: Базовые алгоритмы и структуры данных, оценка асимптотической сложности O(N)
+- Базы данных & SQL: SQLite (GROUP BY, HAVING, оконные функции ROW_NUMBER/LAG/LEAD, CTE, подзапросы)
+- Анализ данных & ML: Pandas, NumPy, Scikit-Learn, Jupyter Notebook
+- Инструменты: Git, GitHub, Docker
