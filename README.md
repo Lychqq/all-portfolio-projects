@@ -1,10 +1,10 @@
 ﻿# Portfolio Projects Suite
 
-Практические проекты на **Python** и **JavaScript (ES6+)**: веб-сервисы, телеграм-боты для автоматизации, базы данных, а также комплекс практических и курсовых работ по фронтенд-разработке и DOM/API.
+Практические проекты на Python и JavaScript (ES6+): веб-сервисы, телеграм-боты для автоматизации, базы данных, а также комплекс практических и курсовых работ по фронтенд-разработке и DOM/API.
 
 ---
 
-## 🚀 Проекты
+## Проекты
 
 ### 1. [Expense & Subscription Tracker](./expense-tracker)
 **Стек:** Python, FastAPI, SQLite, Jinja2.
@@ -27,11 +27,11 @@
 
 ---
 
-## 🛠 Технический стек
+## Технический стек
 
-* **Языки программирования:** Python 3 (структуры данных, ООП), JavaScript (ES6+)
-* **Frontend & Web APIs:** DOM Manipulation, Fetch API, HTML5 / CSS3, Canvas 2D (equestAnimationFrame), LocalStorage, File API (FileReader, Base64)
-* **Backend & Фреймворки:** FastAPI, Jinja2, Node.js (HTTP / REST)
-* **Базы данных & Хранилища:** SQLite (GROUP BY, HAVING, оконные функции ROW_NUMBER/LAG/LEAD, CTE, подзапросы), LocalStorage JSON
-* **Анализ данных & ML:** Pandas, NumPy, Scikit-Learn, Jupyter Notebook
-* **Инструменты & Паттерны:** Git, GitHub, Docker, Модульный паттерн (ES Modules, IIFE), Регулярные выражения (RegExp)
+- Языки программирования: Python 3 (структуры данных, ООП), JavaScript (ES6+)
+- Frontend & Web APIs: DOM Manipulation, Fetch API, HTML5 / CSS3, Canvas 2D (equestAnimationFrame), LocalStorage, File API (FileReader, Base64)
+- Backend & Фреймворки: FastAPI, Jinja2, Node.js (HTTP / REST)
+- Базы данных & Хранилища: SQLite (GROUP BY, HAVING, оконные функции ROW_NUMBER/LAG/LEAD, CTE, подзапросы), LocalStorage JSON
+- Анализ данных & ML: Pandas, NumPy, Scikit-Learn, Jupyter Notebook
+- Инструменты & Паттерны: Git, GitHub, Docker, Модульный паттерн (ES Modules, IIFE), Регулярные выражения (RegExp)
