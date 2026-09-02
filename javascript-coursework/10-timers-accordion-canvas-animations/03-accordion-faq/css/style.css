@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+  }
+  
+  .faq {
+    max-width: 700px;
+    margin: 50px auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  /* ЧЕРЕДОВАНИЕ */
+  .faq-item:nth-child(odd) .faq-question {
+    background: #fff;
+    color: #000;
+  }
+  
+  .faq-item:nth-child(even) .faq-question {
+    background: #5b2c83;
+    color: #fff;
+  }
+  
+  .faq-question {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-answer {
+    padding: 15px;
+    background: white;
+    color: black;
+    display: none;
+  }
+  
+  .plus {
+    font-size: 20px;
+  }
+
+  .plus::after {
+    content: '+';
+  }
+
+  .faq-item.active .plus::after {
+    content: '-';
+  }
+
+  
+  .faq-item.active .faq-answer {
+    display: block;
+  }

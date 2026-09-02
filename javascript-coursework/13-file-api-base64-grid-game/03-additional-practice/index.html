@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top">
+
+        <input type="text" id="search" placeholder="Поиск">
+
+        <select id="filter">
+
+            <option value="">Все категории</option>
+
+        </select>
+
+        <button id="openModal">
+            Добавить товар
+        </button>
+
+    </div>
+
+    <div class="goods"></div>
+
+    <div class="pagination"></div>
+
+</div>
+
+<div class="modal">
+
+    <div class="modal-content">
+
+        <form class="form">
+
+            <input type="text" class="title" placeholder="Название" required>
+
+            <input type="number" class="price" placeholder="Цена" required>
+
+            <input type="text" class="category" placeholder="Категория" required>
+
+            <textarea class="description" placeholder="Описание"></textarea>
+
+            <button type="submit">Сохранить</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>     C

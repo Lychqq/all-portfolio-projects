@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    gap: 20px;
+}
+
+.session{
+    padding: 20px;
+    border: solid black;
+    border-width: cap;
+    border-color: black;
+}
+
+.storage{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-top: 4px;
+    border: solid black;
+    border-width: cap;
+    border-color: black;
+}
+.reset-local{
+    background-color: chartreuse;
+    width: 15em;
+    height: 3em;
+    border-style: solid;
+    border-color: whitesmoke;
+    border-width: 4px;
+}
+.reset-session{
+    background-color: chartreuse;
+    width: 15em;
+    height: 3em;
+    border-style: solid;
+    border-color: whitesmoke;
+    border-width: 4px;
+}
+
+.color {
+    width: 6em;
+    height: 3em;
+}
+
+.num {
+    width: 15em;
+    height: 2em;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}

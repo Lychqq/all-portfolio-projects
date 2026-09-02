@@ -1,0 +1,19 @@
+.ticket {
+    background-color: antiquewhite;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 13px;
+}
+
+.line {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+
+.slot {
+    width: 40px;
+    height: 40px;
+    background-color: brown;
+}

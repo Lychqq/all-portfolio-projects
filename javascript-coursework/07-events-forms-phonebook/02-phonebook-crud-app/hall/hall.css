@@ -1,0 +1,42 @@
+#app {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.area {
+    background-color: antiquewhite;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.line {
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+}
+
+
+.seat {
+    width: 20px;
+    height: 20px;
+    background-color: brown;
+}
+
+.reservation{
+    border-style: solid;
+    border-width: 5px;
+    width: 600px;
+    height: 400px;
+    border-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+.btn {
+    height: 60px;
+    width: 300px;
+    background-color: aqua;
+    font-size: 20px;;
+}

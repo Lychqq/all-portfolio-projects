@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: monospace;
+  background: #fff;
+  gap: 16px;
+}
+
+.settings {
+  display: flex;
+  gap: 10px;
+}
+
+.settings input {
+  padding: 8px;
+  width: 140px;
+  border: 1px solid #ccc;
+  font-family: monospace;
+}
+
+.settings button {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-family: monospace;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+td:hover {
+  background: #f0f0f0;
+}
+
+td.done {
+  cursor: default;
+  pointer-events: none;
+}
+
+td.win {
+  background: #ccffcc;
+  color: green;
+}
+
+td.miss {
+  background: #fff;
+  color: #aaa;
+}
+
+.info {
+  font-size: 14px;
+  color: #555;
+}

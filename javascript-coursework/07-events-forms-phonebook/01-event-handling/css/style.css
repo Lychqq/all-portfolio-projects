@@ -1,0 +1,10 @@
+.pr {
+    width: 800px;
+    height: 800px;
+    background-color: beige;
+    z-index: 0;
+}
+
+h1 {
+    z-index: 2;
+}

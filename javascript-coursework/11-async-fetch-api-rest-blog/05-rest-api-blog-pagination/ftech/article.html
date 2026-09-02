@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Статья</title>
+    <link rel="stylesheet" href="./article.css" />
+</head>
+<body>
+    <main class="container">
+        <article id="articleContainer" hidden>
+            <h1 id="articleTitle" class="article-title"></h1>
+            <p id="articleBody" class="article-content"></p>
+            <div class="article-footer">
+                <a class="back-link" href="blog.html">← К списку статей</a>
+                <div class="author">
+                    <p id="authorName" class="author-name"></p>
+                    <p id="authorEmail" class="author-email"></p>
+                </div>
+            </div>
+        </article>
+        <p id="status" class="status"></p>
+    </main>
+
+    <script src="./article.js" defer></script>
+</body>
+</html>

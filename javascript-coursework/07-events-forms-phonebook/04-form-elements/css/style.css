@@ -1,0 +1,48 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.my-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 500px;
+}
+
+.fieldset-radio {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 200px;
+    border: none;
+    padding: 0;
+}
+
+.btn-primary {
+    width: 100px;
+    height: 25px;
+    background: #0080ff;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
+.btn-danger {
+    width: 100px;
+    height: 25px;
+    background: #ff0000;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
+.form-label {
+    display: inline-flex;
+    width: 75px;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Анимация с requestAnimationFrame</h2>
+        <canvas-id="canvas" width="600" height="400"></canvas>
+        <div>
+            <button id="startBtn">Старт</button>
+        <button id="stopBtn">Стоп</button> 
+        <button id="resetBtn">Сброс</button>
+        </div>
+        <div class="info">
+            <p>Квадрат движется слева направо и обратно</p>
+            <p>FPS: <span id="fps">0</span></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+<!-- const ctx = canvas.getContext('2d');
+// Основные методы рисования через ctx:
+ctx.fillRect(x, y, w, h);
+// Закрашенный прямоугольник
+ctx.strokeRect(x, y, w, h);
+// Контур прямоугольника
+ctx.fillStyle = 'red';
+// Цвет заливки
+ctx.beginPath();
+// Начать новую фигуру
+ctx.moveTo(x, y);
+// Переместить "перо"
+ctx.lineTo(x, y);
+// Нарисовать линию
+ctx.fillText('текст', x, y);
+// Нарисовать текст -->
