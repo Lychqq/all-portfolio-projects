@@ -1,4 +1,4 @@
-﻿# Portfolio Projects Suite
+# Portfolio Projects Suite
 
 Практические проекты на Python и JavaScript (ES6+): веб-сервисы, телеграм-боты для автоматизации, базы данных, а также комплекс практических и курсовых работ по фронтенд-разработке и DOM/API.
 
@@ -24,6 +24,13 @@
 - **REST Blog & Pagination:** динамический блог с асинхронной подгрузкой статей, авторов и пагинацией по URL (URLSearchParams).
 - **Multi-user TODO App:** трекер задач с авторизацией по пользователям и сохранением состояния в localStorage.
 - **Интерактив и Графика:** мини-игры (RPS, Marbles, Клеточки), плавная 2D-анимация на Canvas, модуль таймеров обратного отсчета и FAQ-аккордеон.
+
+---
+
+## Сертификаты
+
+- **[All Cups Certificate (VK Tech)](./certificates/all-cups-certificate.pdf)** — официальный сертификат участия на платформе All Cups от VK.
+- **[Stepik Certificate](./certificates/stepik-certificate.pdf)** — сертификат об успешном прохождении курса на платформе Stepik.
 
 ---
 
