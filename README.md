@@ -29,8 +29,8 @@
 
 ## Сертификаты
 
-- **[All Cups Certificate (VK Tech)](./certificates/all-cups-certificate.pdf)** — официальный сертификат участия на платформе All Cups от VK.
-- **[Stepik Certificate](./certificates/stepik-certificate.pdf)** — сертификат об успешном прохождении курса на платформе Stepik.
+- **[AI Challenge 2026 Certificate (Сбер / Альянс в сфере ИИ)](./certificates/ai-challenge-sber-certificate.pdf)** — сертификат участника основного этапа Международного конкурса по искусственному интеллекту «AI Challenge 2026» от ПАО Сбербанк.
+- **[Samsung & Stepik Certificate (Нейронные сети и компьютерное зрение)](./certificates/samsung-neural-networks-certificate.pdf)** — сертификат с отличием (86%) за успешное освоение курса «Нейронные сети и компьютерное зрение» от Samsung Innovation Campus на платформе Stepik.
 
 ---
 
