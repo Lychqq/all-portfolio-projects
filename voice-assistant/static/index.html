@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Транскрибация аудио</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="hero">
+            <h2>ГОЛОСОВОЙ АССИСТЕНТ</h2>
+
+
+            <div class="cards">
+
+                <div class="card_1">
+                    <p id="status">Нажмите кнопку, чтобы говорить</p>
+                    <div class="recorder-section">
+                        <button id="recordBtn">Начать запись</button>
+                    </div>
+                </div>
+          
+                <div class="card_2">
+
+                    <p>Или выберите готовый аудиофайл</p>
+                    <div class="upload-section">
+                        <input type="file" id="audioFileInput" accept="audio/*">
+                        <button id="uploadBtn">Отправить</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="result-section">
+                <h3>Результат:</h3>
+                <div id="resultText">Здесь появится расшифрованный текст...</div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/app.js"></script>
+</body>
+</html>

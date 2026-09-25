@@ -25,6 +25,12 @@
 - **Multi-user TODO App:** трекер задач с авторизацией по пользователям и сохранением состояния в localStorage.
 - **Интерактив и Графика:** мини-игры (RPS, Marbles, Клеточки), плавная 2D-анимация на Canvas, модуль таймеров обратного отсчета и FAQ-аккордеон.
 
+### 4. [Voice Assistant & Speech-to-Text Service](./voice-assistant)
+**Стек:** Python, FastAPI, SQLModel, SQLite, SpeechRecognition, pydub, Web Audio API (MediaRecorder), JavaScript.
+- Сервис локального захвата аудио с микрофона в реальном времени и распознавания речи в текст.
+- Поддержка загрузки готовых аудиофайлов произвольных форматов (WAV, MP3, OGG).
+- Сохранение истории транскрибаций и метаданных аудио в базе данных SQLite через SQLModel.
+
 ---
 
 ## Сертификаты
@@ -36,9 +42,9 @@
 
 ## Технический стек
 
-- Языки программирования: Python 3 (структуры данных, ООП), JavaScript (ES6+)
-- Frontend & Web APIs: DOM Manipulation, Fetch API, HTML5 / CSS3, Canvas 2D (equestAnimationFrame), LocalStorage, File API (FileReader, Base64)
-- Backend & Фреймворки: FastAPI, Jinja2, Node.js (HTTP / REST)
-- Базы данных & Хранилища: SQLite (GROUP BY, HAVING, оконные функции ROW_NUMBER/LAG/LEAD, CTE, подзапросы), LocalStorage JSON
-- Анализ данных & ML: Pandas, NumPy, Scikit-Learn, Jupyter Notebook
+- Языки программирования: Python 3 (структуры данных, ООП, асинхронность), JavaScript (ES6+)
+- Frontend & Web APIs: DOM Manipulation, Web Audio API (MediaRecorder), Fetch API, HTML5 / CSS3, Canvas 2D, LocalStorage, File API
+- Backend & Фреймворки: FastAPI, SQLModel, Jinja2, SpeechRecognition, pydub, Node.js (HTTP / REST)
+- Базы данных & Хранилища: SQLite (SQLModel / SQLAlchemy ORM, GROUP BY, HAVING, оконные функции ROW_NUMBER/LAG/LEAD, CTE, подзапросы), LocalStorage JSON
+- Анализ данных & ML: Speech-to-Text, Pandas, NumPy, Scikit-Learn, Jupyter Notebook
 - Инструменты & Паттерны: Git, GitHub, Docker, Модульный паттерн (ES Modules, IIFE), Регулярные выражения (RegExp)
