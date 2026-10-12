@@ -9,7 +9,6 @@ class AudioFile(SQLModel):
     name: str = Field(index=True)
     long: float | None = None
     text: str | None = None
-    summary: str  | None = None
     status: str = 'processing'
 
 class AudioDB(AudioFile, table = True):

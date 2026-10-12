@@ -1,16 +1,21 @@
-from sqlmodel import SQLModel, create_engine,Session
+from sqlmodel import SQLModel
+from sqlmodel.ext.asyncio.session import AsyncSession
+from sqlalchemy.ext.asyncio import create_async_engine
 from typing import Annotated
 from fastapi import Depends
-sqlite_url = "sqlite:///database.db"
-engine = create_engine(sqlite_url)
+from collections.abc import AsyncGenerator
 
-def create_db():
-    SQLModel.metadata.create_all(engine)
+sqlite_url = "sqlite+aiosqlite:///database.db"
+engine = create_async_engine(sqlite_url)
 
-def get_session():
-    with Session(engine) as session:
+async def create_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(SQLModel.metadata.create_all)
+
+async def get_session() -> AsyncGenerator[AsyncSession, None] :
+    async with AsyncSession(engine) as session:
         yield session
     
 
-SessionDep = Annotated[Session,Depends(get_session)]
+SessionDep = Annotated[AsyncSession,Depends(get_session)]
 

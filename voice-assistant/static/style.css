@@ -148,7 +148,36 @@ h3 {
     text-align: left;
 }
 
-#resultText {
+.result-header,
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.summary-header {
+    margin-top: 18px;
+}
+
+.action-btn {
+    background-color: #202840;
+    color: #E0E8EC;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    opacity: 0.85;
+}
+
+#resultText,
+#summaryText {
     background-color: #E0E8EC;
     border: 1px solid #A8B0B8;
     border-radius: 6px;
@@ -157,7 +186,7 @@ h3 {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.5;
-    min-height: 90px;
+    min-height: 70px;
     word-break: break-word;
     white-space: pre-wrap;
 }

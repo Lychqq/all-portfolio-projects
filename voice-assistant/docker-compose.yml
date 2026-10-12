@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  voice-assistant:
+    build: .
+    container_name: voice-assistant-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./database.db:/app/database.db
+    restart: unless-stopped

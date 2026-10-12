@@ -9,10 +9,19 @@ const recordBtn = document.getElementById('recordBtn');
 const statusText = document.getElementById('status');
 
 const resultText = document.getElementById('resultText');
+const copyBtn = document.getElementById('copyBtn');
 
-const fileInput= document.getElementById('audioFileInput');
+const fileInput = document.getElementById('audioFileInput');
+const uploadBtn = document.getElementById('uploadBtn');
 
-const uploadBtn = document.getElementById('uploadBtn')
+copyBtn.addEventListener('click', async () => {
+    if (resultText.textContent && resultText.textContent !== 'Здесь появится расшифрованный текст...') {
+        await navigator.clipboard.writeText(resultText.textContent);
+        const prev = copyBtn.textContent;
+        copyBtn.textContent = 'Скопировано!';
+        setTimeout(() => copyBtn.textContent = prev, 1500);
+    }
+});
 
 
 recordBtn.addEventListener('click', async() =>{
@@ -79,7 +88,6 @@ async function sendAudioToBackend(fileBlob, filename) {
 
     } catch (err) {
         statusText.textContent = 'Не удалось распознать аудио';
-        resultText.textContent =err.message;
-        
+        resultText.textContent = err.message;
     }
 }
