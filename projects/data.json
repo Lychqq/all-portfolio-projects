@@ -18,7 +18,10 @@
     "tags": ["2026", "Computer Vision", "PyTorch", "LightGBM", "AI Challenge"],
     "link": "https://github.com/Lychqq/AI_Challenge-2026-hak",
     "images": [
-      { "src": "1.webp", "label": "Архитектура инференса и бенчмарк" }
+      { "src": "1.webp", "label": "Титульный слайд решения" },
+      { "src": "3.webp", "label": "Архитектура TabularMLP" },
+      { "src": "4.webp", "label": "Бенчмарк и скор 0.835+ F1" },
+      { "src": "2.webp", "label": "Геометрический анализ Trimesh" }
     ]
   },
   {

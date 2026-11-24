@@ -58,7 +58,7 @@ class PortfolioApp {
 
   async loadProjects() {
     try {
-      const res = await fetch('./projects/data.json?v=20261124_8');
+      const res = await fetch('./projects/data.json?v=20261124_9');
       this.projects = await res.json();
     } catch (e) {
       console.warn('Fallback projects loading:', e);
