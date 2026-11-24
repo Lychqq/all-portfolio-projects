@@ -1,6 +1,7 @@
-# Portfolio Projects Suite
+# Nikolay Lvov — AI Backend Engineer Portfolio Suite
 
-Практические проекты на Python и JavaScript (ES6+): веб-сервисы, телеграм-боты для автоматизации, базы данных, а также комплекс практических и курсовых работ по фронтенд-разработке и DOM/API.
+Инженерные и соревновательные проекты на стыке Machine Learning, рекомендательных систем, LLM-интеграций и высоконагруженного асинхронного Python/FastAPI бэкенда.
+Онлайн-портфолио: [https://lychqq.github.io/all-portfolio-projects/](https://lychqq.github.io/all-portfolio-projects/)
 
 ---
 
