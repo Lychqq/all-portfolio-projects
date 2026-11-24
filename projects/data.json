@@ -1,0 +1,66 @@
+[
+  {
+    "id": "odin-zapros",
+    "name": "О!ДИН ЗАПРОС — ХАКАТОН ОСТРОВКА",
+    "description": "Интеллектуальный сервис пакетного подбора туров под ключ («Отель + Авиаперелет + Трансфер») на все 7 Канарских островов для хакатона Островка 2026. Интерактивный AI-диалог на естественном языке, онбординг-квизы, динамическая стыковка 64 регулярных рейсов, трансферов и базы из 19 689 отелей с моментальным расчетом стоимости.",
+    "tags": ["2026", "Hackathon", "FastAPI", "GigaChat API", "Groq LLM", "Pure JS"],
+    "link": "https://drive.google.com/file/d/1epc-jEabfuGjjcx0SGWUPdrq2eiUYeTR/view?usp=sharing",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "dinov2-3d",
+    "name": "AI CHALLENGE: 3D DINOV2",
+    "description": "Мультимодальное SOTA-решение для классификации дефектов и оценки качества 3D-полигональных моделей. Глубокие визуальные эмбеддинги DINOv2 ViT-L/14, 1035 геометрических дескрипторов Trimesh, адаптивный SMOTE и ансамбль из 55 моделей LightGBM с индивидуальным подбором порогов. Соревновательный скор 12.0+ (Macro F1 > 0.835) на чемпионате AI Challenge от Сбера и Альянса в сфере ИИ.",
+    "tags": ["2026", "Computer Vision", "PyTorch", "LightGBM", "AI Challenge"],
+    "link": "https://github.com/Lychqq/ai-challenge-3d-dinov2",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "movie-recsys",
+    "name": "MOVIERECSYS TINDER DECK",
+    "description": "Полнофункциональная рекомендательная система фильмов с физикой Tinder-свайпов на чистом JavaScript (W3C PointerEvents). Коллаборативная фильтрация Item-Item Adjusted Cosine с поддержкой shrinkage, эвристики холодного старта, групповой лобби-консенсус (Borda Count, Least Misery) и динамическое предотвращение эхо-камер (MMR). Стек: FastAPI, SQLite WAL, Vanilla JS.",
+    "tags": ["2026", "RecSys", "FastAPI", "Vanilla JS", "SQLite WAL", "Coursework"],
+    "link": "https://github.com/Lychqq/movie_recsys",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "vk-analytics",
+    "name": "VK SUPPORT AI TRIAGE",
+    "description": "Корпоративная платформа интеллектуального мониторинга и автоматической маршрутизации обращений пользователей технической поддержки VK. Автономный Zero-shot триаж неструктурированного текста на базе локальной LLM Qwen2.5-3B-Instruct (Pydantic V2), расчет SLA, MTTR и CSAT в реальном времени, интерактивный дашборд на Plotly.js.",
+    "tags": ["2026", "NLP & LLM", "FastAPI", "PostgreSQL 16", "Plotly.js", "Analytics"],
+    "link": "https://github.com/Lychqq/vk_public_analytics",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "voice-assistant",
+    "name": "VOICE STT ASSISTANT",
+    "description": "Сервис локального захвата микрофона в браузере в реальном времени и автоматической транскрибации речи в текст. Поддержка произвольных форматов аудио (WAV, MP3, OGG), база данных истории транскрибаций и метаданных SQLite через SQLModel ORM.",
+    "tags": ["2025", "Audio Ingestion", "FastAPI", "SQLModel", "Web Audio API"],
+    "link": "https://github.com/Lychqq/all-portfolio-projects/tree/main/voice-assistant",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "expense-tracker",
+    "name": "EXPENSE & SUB TRACKER",
+    "description": "Веб-сервис для учета персональных финансов и регулярных подписок. Автоматический расчет ежемесячной нагрузки, распределение по категориям расходов, хранение истории транзакций в реляционной базе данных SQLite, веб-интерфейс на Jinja2.",
+    "tags": ["2025", "Fullstack", "FastAPI", "SQLite", "Jinja2"],
+    "link": "https://github.com/Lychqq/all-portfolio-projects/tree/main/expense-tracker",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "tg-bots",
+    "name": "TELEGRAM AUTOMATION SUITE",
+    "description": "Автоматизированный комплекс для управления медиа-каналами в Telegram: отложенная публикация по расписанию, пакетная группировка медиа в альбомы и хранение очередей в SQLite, а также интерактивный игровой бот для групповых чатов.",
+    "tags": ["2025", "Automation", "Python", "Telegram Bot API", "SQLite"],
+    "link": "https://github.com/Lychqq/all-portfolio-projects/tree/main/tg-bots",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  },
+  {
+    "id": "js-coursework",
+    "name": "JS COREWORK & LABS SUITE",
+    "description": "Комплексный архив из 13 практических модулей: CMS Goods Manager с валидацией и модальными окнами, асинхронный REST Blog с пагинацией по URL, мультипользовательский TODO App, физика и игры на Canvas 2D (RPS, Marbles).",
+    "tags": ["2025", "Frontend Engineering", "Canvas 2D", "DOM API", "Async REST"],
+    "link": "https://github.com/Lychqq/all-portfolio-projects/tree/main/javascript-coursework",
+    "images": ["1.webp", "2.webp", "3.webp"]
+  }
+]
