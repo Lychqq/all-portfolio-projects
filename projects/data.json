@@ -4,7 +4,7 @@
     "name": "О!ДИН ЗАПРОС — ХАКАТОН ОСТРОВКА",
     "description": "Интеллектуальный сервис пакетного подбора туров под ключ («Отель + Авиаперелет + Трансфер») на все 7 Канарских островов для хакатона Островка 2026. Интерактивный AI-диалог на естественном языке, онбординг-квизы, динамическая стыковка 64 регулярных рейсов, трансферов и базы из 19 689 отелей с моментальным расчетом стоимости.",
     "tags": ["2026", "Hackathon", "FastAPI", "GigaChat API", "Groq LLM", "Pure JS"],
-    "link": "https://drive.google.com/file/d/1epc-jEabfuGjjcx0SGWUPdrq2eiUYeTR/view?usp=sharing",
+    "link": "https://github.com/Lychqq/-Ohackathon-1Zapros-psio",
     "images": [
       { "src": "1.webp", "label": "Стартовый экран и AI-поиск" },
       { "src": "2.webp", "label": "Таймлайн тура SVO → TFS + отель" },
@@ -16,7 +16,7 @@
     "name": "AI CHALLENGE: 3D DINOV2",
     "description": "Мультимодальное SOTA-решение для классификации дефектов и оценки качества 3D-полигональных моделей. Глубокие визуальные эмбеддинги DINOv2 ViT-L/14, 1035 геометрических дескрипторов Trimesh, адаптивный SMOTE и ансамбль из 55 моделей LightGBM с индивидуальным подбором порогов. Соревновательный скор 12.0+ (Macro F1 > 0.835) на чемпионате AI Challenge от Сбера и Альянса в сфере ИИ.",
     "tags": ["2026", "Computer Vision", "PyTorch", "LightGBM", "AI Challenge"],
-    "link": "https://github.com/Lychqq/ai-challenge-3d-dinov2",
+    "link": "https://github.com/Lychqq/AI_Challenge-2026-hak",
     "images": [
       { "src": "1.webp", "label": "Архитектура инференса и бенчмарк" }
     ]
@@ -38,7 +38,7 @@
     "name": "VK SUPPORT AI TRIAGE",
     "description": "Корпоративная платформа интеллектуального мониторинга и автоматической маршрутизации обращений пользователей технической поддержки VK. Автономный Zero-shot триаж неструктурированного текста на базе локальной LLM Qwen2.5-3B-Instruct (Pydantic V2), расчет SLA, MTTR и CSAT в реальном времени, интерактивный дашборд на Plotly.js.",
     "tags": ["2026", "NLP & LLM", "FastAPI", "PostgreSQL 16", "Plotly.js", "Analytics"],
-    "link": "https://github.com/Lychqq/vk_public_analytics",
+    "link": "https://github.com/Lychqq/support-analytics",
     "images": [
       { "src": "1.webp", "label": "Корпоративный дашборд поддержки" }
     ]
