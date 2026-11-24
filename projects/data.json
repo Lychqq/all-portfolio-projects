@@ -22,6 +22,16 @@
     ]
   },
   {
+    "id": "bank-rag",
+    "name": "BANKING SUPPORT RAG PIPELINE",
+    "description": "Производственный гибридный RAG-пайплайн для банковской клиентской поддержки по регламентам, тарифам и договорам ЦБО. Двухуровневый гибридный поиск (семантический pgvector HNSW + точный BM25 tsvector) с объединением Reciprocal Rank Fusion (RRF), Corrective RAG (CRAG Grader) для фильтрации галлюцинаций и автоматического переписывания запросов, модули быстрой пакетной GPU-индексации на PyTorch и бенчмаркинга качества через Ragas.",
+    "tags": ["2026", "RAG & LLM", "pgvector HNSW", "BM25 Hybrid", "CRAG", "Ragas Eval"],
+    "link": "https://github.com/Lychqq/pet-bank-rag",
+    "images": [
+      { "src": "1.webp", "label": "Архитектура гибридного RAG и CRAG Grader" }
+    ]
+  },
+  {
     "id": "movie-recsys",
     "name": "MOVIERECSYS TINDER DECK",
     "description": "Полнофункциональная рекомендательная система фильмов с физикой Tinder-свайпов на чистом JavaScript (W3C PointerEvents). Коллаборативная фильтрация Item-Item Adjusted Cosine с поддержкой shrinkage, эвристики холодного старта, групповой лобби-консенсус (Borda Count, Least Misery) и динамическое предотвращение эхо-камер (MMR). Стек: FastAPI, SQLite WAL, Vanilla JS.",
