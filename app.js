@@ -30,6 +30,9 @@ class PortfolioApp {
     this.setupScrollAndParallax();
     this.setupHeaderOrbit();
 
+    // Force initial zero scroll state
+    this.onScroll(0);
+
     // Close loading screen
     setTimeout(() => {
       const loader = document.getElementById('loading');
@@ -77,7 +80,7 @@ class PortfolioApp {
         const rect = el.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `translateY(-6px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.02)`;
+        el.style.transform = `translateY(-8px) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) scale3d(1.04, 1.04, 1.04)`;
       });
       el.addEventListener('mouseleave', () => {
         el.style.transform = '';
@@ -277,16 +280,16 @@ class PortfolioApp {
     const headerWords = document.getElementById('header-words');
 
     if (scrollY > 50) {
-      const factor = Math.min(1, scrollY / 600);
-      const scale = 1 - factor * 0.2;
-      const logoOpacity = Math.max(0, 1 - factor * 1.8);
+      const factor = Math.min(1, scrollY / 500);
+      const scale = 1 - factor * 0.25;
+      const opacity = Math.max(0, 1 - factor * 2);
       if (headerLogo) {
         headerLogo.style.transform = `translate(-50%, -50%) scale(${scale})`;
-        headerLogo.style.opacity = logoOpacity;
+        headerLogo.style.opacity = opacity;
       }
       if (headerWords) {
-        // Words retain their difference blend mode and rotate cleanly
         headerWords.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        headerWords.style.opacity = opacity;
       }
     } else {
       if (headerLogo) {
@@ -295,6 +298,7 @@ class PortfolioApp {
       }
       if (headerWords) {
         headerWords.style.transform = 'translate(-50%, -50%) scale(1)';
+        headerWords.style.opacity = 1;
       }
     }
 
@@ -317,13 +321,14 @@ class PortfolioApp {
       const masks = projEl.querySelectorAll('.elastic-image');
       masks.forEach((maskEl, mIdx) => {
         const speed = parseFloat(maskEl.dataset.speed || '0.3');
-        const offset = (rect.top - windowH * 0.5) * speed * 0.25;
+        const offset = (rect.top - windowH * 0.5) * speed * 0.3;
         const progress = (rect.top - windowH * 0.5) / windowH;
-        const rotY = progress * (mIdx % 2 === 0 ? 5 : -5);
-        const rotX = progress * 3;
+        const rotY = progress * (mIdx % 2 === 0 ? 12 : -12);
+        const rotX = progress * 7;
+        const rotZ = progress * (mIdx % 2 === 0 ? 3 : -3);
         const innerMask = maskEl.querySelector('.elastic-image-mask');
         if (innerMask) {
-          innerMask.style.transform = `translateY(${offset}px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+          innerMask.style.transform = `translateY(${offset}px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg)`;
         }
       });
     });
