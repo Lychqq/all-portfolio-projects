@@ -310,32 +310,36 @@ a {
   pointer-events: all;
   cursor: pointer;
   box-sizing: border-box;
-  border: 1px solid rgba(35, 42, 56, 0);
-  transition: border 0.6s cubic-bezier(0.19, 1, 0.22, 1), transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease;
   overflow: hidden;
   background: #f1f5f9;
-  border-radius: 4px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.12);
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 #medias .project .image-container:hover {
-  border: 1px solid rgba(35, 42, 56, 0.2);
-  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -12px rgba(15, 23, 42, 0.22);
 }
 
 #medias .project .image-container img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
   transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 #medias .project .image-container:hover img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .elastic-image {
   display: inline-flex;
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 .elastic-image .elastic-image-mask {
@@ -343,20 +347,22 @@ a {
   display: inline-flex;
   position: relative;
   will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
 }
 
 #medias .project .large {
-  width: calc(var(--container-width) * 580 / 1380);
+  width: calc(var(--container-width) * 720 / 1380);
 }
 
 #medias .project .medium {
-  width: calc(var(--container-width) * 358 / 1380);
-  margin-top: calc(var(--container-width) * 120 / 1380);
+  width: calc(var(--container-width) * 480 / 1380);
+  margin-top: calc(var(--container-width) * 40 / 1380);
 }
 
 #medias .project .small {
-  width: calc(var(--container-width) * 230 / 1380);
-  margin-top: calc(var(--container-width) * 40 / 1380);
+  width: calc(var(--container-width) * 420 / 1380);
+  margin-top: calc(var(--container-width) * 20 / 1380);
 }
 
 /* Stagger / asymmetrical alternation */

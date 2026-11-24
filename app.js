@@ -72,6 +72,18 @@ class PortfolioApp {
     if (!container) return;
     container.innerHTML = '';
 
+    const attach3DTilt = el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        el.style.transform = `translateY(-6px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.02)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    };
+
     this.projects.forEach((proj, idx) => {
       const projectDiv = document.createElement('div');
       projectDiv.className = 'project';
@@ -87,6 +99,7 @@ class PortfolioApp {
       smallDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
       smallDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
       smallDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
+      attach3DTilt(smallDiv);
 
       // Group (Large + Medium)
       const groupDiv = document.createElement('div');
@@ -99,6 +112,7 @@ class PortfolioApp {
       largeDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
       largeDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
       largeDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
+      attach3DTilt(largeDiv);
 
       const mediumDiv = document.createElement('div');
       mediumDiv.className = 'medium image-container elastic-image';
@@ -107,6 +121,7 @@ class PortfolioApp {
       mediumDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
       mediumDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
       mediumDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
+      attach3DTilt(mediumDiv);
 
       groupDiv.appendChild(largeDiv);
       groupDiv.appendChild(mediumDiv);
@@ -298,14 +313,17 @@ class PortfolioApp {
         bestIndex = idx;
       }
 
-      // Parallax masks
+      // Parallax masks with dynamic 3D rotation
       const masks = projEl.querySelectorAll('.elastic-image');
-      masks.forEach(maskEl => {
+      masks.forEach((maskEl, mIdx) => {
         const speed = parseFloat(maskEl.dataset.speed || '0.3');
         const offset = (rect.top - windowH * 0.5) * speed * 0.25;
+        const progress = (rect.top - windowH * 0.5) / windowH;
+        const rotY = progress * (mIdx % 2 === 0 ? 5 : -5);
+        const rotX = progress * 3;
         const innerMask = maskEl.querySelector('.elastic-image-mask');
         if (innerMask) {
-          innerMask.style.transform = `translateY(${offset}px)`;
+          innerMask.style.transform = `translateY(${offset}px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
         }
       });
     });
