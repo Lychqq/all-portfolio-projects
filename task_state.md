@@ -27,3 +27,5 @@
 - [x] Тестирование в Chrome DevTools (рендеринг, скролл, параллакс, мобильная версия).
 - [x] Фиксация изменений в git.
 - [x] Post-Execution Protocol (Memory & Growth log).
+  - Growth Log: зафиксированы 3 переиспользуемых паттерна в `growth-log/2026-11-24.md` (Real Artifact Verification, Ephemeral Process Lifecycle, Difference Inversion Luminance and Viewport Collision Guarding).
+  - Глобальная копия: `.agents/growth-log/2026-11-24.md`.
