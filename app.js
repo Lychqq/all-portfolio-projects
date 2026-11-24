@@ -6,7 +6,6 @@
 class PortfolioApp {
   constructor() {
     this.projects = [];
-    this.activeIndex = -1;
     this.mouse = {
       el: document.getElementById('mouse'),
       current: { x: window.innerWidth / 2, y: window.innerHeight / 2 },
@@ -59,152 +58,146 @@ class PortfolioApp {
 
   async loadProjects() {
     try {
-      const res = await fetch('./projects/data.json');
+      const res = await fetch('./projects/data.json?v=20261124_5');
       this.projects = await res.json();
     } catch (e) {
       console.warn('Fallback projects loading:', e);
       this.projects = [];
     }
 
-    this.renderMedias();
-    this.renderProjectsInfo();
+    this.renderProjects();
   }
 
-  renderMedias() {
-    const container = document.getElementById('medias');
-    if (!container) return;
-    container.innerHTML = '';
+  renderProjects() {
+    const feed = document.getElementById('projects-feed');
+    if (!feed) return;
+    feed.innerHTML = '';
 
     const attach3DTilt = el => {
       el.addEventListener('mousemove', e => {
         const rect = el.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `translateY(-8px) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) scale3d(1.04, 1.04, 1.04)`;
+        el.style.transform = `perspective(1200px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale3d(1.015, 1.015, 1.015)`;
       });
       el.addEventListener('mouseleave', () => {
-        el.style.transform = '';
+        el.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
       });
     };
 
     this.projects.forEach((proj, idx) => {
-      const projectDiv = document.createElement('div');
-      projectDiv.className = 'project';
-      projectDiv.dataset.id = proj.id;
-      projectDiv.dataset.index = idx;
-      projectDiv.dataset.link = proj.link;
+      const card = document.createElement('article');
+      card.className = 'project-card';
+      card.dataset.id = proj.id;
+      card.dataset.index = idx;
 
-      // Small image
-      const smallDiv = document.createElement('div');
-      smallDiv.className = 'small image-container elastic-image';
-      smallDiv.dataset.speed = '0.2';
-      smallDiv.innerHTML = `<div class="elastic-image-mask"><img src="./assets/projects/${proj.id}/${proj.images[2]}" alt="${proj.name} 3" loading="lazy"></div>`;
-      smallDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
-      smallDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
-      smallDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
-      attach3DTilt(smallDiv);
+      // Header block (Meta, Title, Description)
+      const header = document.createElement('div');
+      header.className = 'project-header';
 
-      // Group (Large + Medium)
-      const groupDiv = document.createElement('div');
-      groupDiv.className = 'group';
+      const year = proj.tags[0] || '2026';
+      const otherTags = proj.tags.slice(1).join(' • ');
 
-      const largeDiv = document.createElement('div');
-      largeDiv.className = 'large image-container elastic-image';
-      largeDiv.dataset.speed = '0.55';
-      largeDiv.innerHTML = `<div class="elastic-image-mask"><img src="./assets/projects/${proj.id}/${proj.images[0]}" alt="${proj.name} 1" loading="lazy"></div>`;
-      largeDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
-      largeDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
-      largeDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
-      attach3DTilt(largeDiv);
-
-      const mediumDiv = document.createElement('div');
-      mediumDiv.className = 'medium image-container elastic-image';
-      mediumDiv.dataset.speed = '0.38';
-      mediumDiv.innerHTML = `<div class="elastic-image-mask"><img src="./assets/projects/${proj.id}/${proj.images[1]}" alt="${proj.name} 2" loading="lazy"></div>`;
-      mediumDiv.addEventListener('click', () => window.open(proj.link, '_blank'));
-      mediumDiv.addEventListener('mouseenter', () => this.onMediaHover(proj.link, true));
-      mediumDiv.addEventListener('mouseleave', () => this.onMediaHover('', false));
-      attach3DTilt(mediumDiv);
-
-      groupDiv.appendChild(largeDiv);
-      groupDiv.appendChild(mediumDiv);
-
-      projectDiv.appendChild(smallDiv);
-      projectDiv.appendChild(groupDiv);
-
-      // Mobile inline info fallback
-      const mobileInfo = document.createElement('div');
-      mobileInfo.className = 'mobile-project-info';
-      mobileInfo.innerHTML = `
-        <h2><a href="${proj.link}" target="_blank">${proj.name} ↗</a></h2>
-        <div class="tags">${proj.tags.join(' • ')}</div>
-        <p>${proj.description}</p>
+      header.innerHTML = `
+        <div class="project-meta">
+          <span class="badge-year">${year}</span>
+          <span>${otherTags}</span>
+        </div>
+        <h2 class="project-title">
+          <a href="${proj.link}" target="_blank" rel="noopener">
+            ${proj.name}
+            <span class="arrow">↗</span>
+          </a>
+        </h2>
+        <p class="project-desc">${proj.description}</p>
       `;
-      projectDiv.appendChild(mobileInfo);
 
-      container.appendChild(projectDiv);
-    });
-  }
+      // Visual block
+      const visual = document.createElement('div');
+      visual.className = 'project-visual';
 
-  renderProjectsInfo() {
-    const container = document.getElementById('projects-info');
-    if (!container) return;
-    container.innerHTML = '';
+      const hasMultiple = Array.isArray(proj.images) && proj.images.length > 1;
 
-    this.projects.forEach((proj, idx) => {
-      const projDiv = document.createElement('div');
-      projDiv.className = idx === 0 ? 'project active' : 'project';
-      projDiv.dataset.id = proj.id;
-      projDiv.dataset.index = idx;
+      // Frame
+      const frame = document.createElement('div');
+      frame.className = 'screenshot-frame';
+      attach3DTilt(frame);
 
-      // Smart title with split lines
-      const h1 = document.createElement('h1');
-      h1.className = 'h1';
-      const a = document.createElement('a');
-      a.href = proj.link;
-      a.target = '_blank';
-      a.rel = 'noopener';
+      let currentImgIdx = 0;
+      const initialImg = proj.images[0].src || proj.images[0];
+      const initialLabel = proj.images[0].label || `${proj.name} 1`;
 
-      const lineSpan = document.createElement('span');
-      lineSpan.className = 'line';
-      lineSpan.dataset.index = 0;
-      const textSpan = document.createElement('span');
-      textSpan.className = 'text';
-      textSpan.textContent = proj.name;
-      lineSpan.appendChild(textSpan);
-      a.appendChild(lineSpan);
-      h1.appendChild(a);
+      const imgEl = document.createElement('img');
+      imgEl.src = `./assets/projects/${proj.id}/${initialImg}`;
+      imgEl.alt = initialLabel;
+      imgEl.loading = 'lazy';
+      frame.appendChild(imgEl);
 
-      // Tags
-      const ul = document.createElement('ul');
-      proj.tags.forEach((t, tIdx) => {
-        const li = document.createElement('li');
-        li.className = 'line';
-        li.dataset.index = tIdx + 1;
-        const liText = document.createElement('span');
-        liText.className = 'text';
-        liText.textContent = t;
-        li.appendChild(liText);
-        ul.appendChild(li);
+      frame.addEventListener('click', () => {
+        if (!hasMultiple) {
+          window.open(proj.link, '_blank');
+        } else {
+          // Cycle to next screen on click
+          currentImgIdx = (currentImgIdx + 1) % proj.images.length;
+          updateActiveScreen(currentImgIdx);
+        }
       });
 
-      // Description
-      const p = document.createElement('p');
-      p.className = 'line';
-      p.dataset.index = proj.tags.length + 1;
-      const pText = document.createElement('span');
-      pText.className = 'text';
-      pText.textContent = proj.description;
-      p.appendChild(pText);
+      frame.addEventListener('mouseenter', () => {
+        this.onMediaHover(proj.link, true, hasMultiple ? 'Click to cycle screens ↗' : 'View Project ↗');
+      });
+      frame.addEventListener('mouseleave', () => {
+        this.onMediaHover('', false);
+      });
 
-      projDiv.appendChild(h1);
-      projDiv.appendChild(ul);
-      projDiv.appendChild(p);
+      visual.appendChild(frame);
 
-      container.appendChild(projDiv);
+      // Multi-screen Tabs switcher
+      let updateActiveScreen = () => {};
+      if (hasMultiple) {
+        const tabsContainer = document.createElement('div');
+        tabsContainer.className = 'showcase-tabs';
+
+        const buttons = proj.images.map((imgObj, sIdx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = sIdx === 0 ? 'tab-btn active' : 'tab-btn';
+          btn.textContent = `Экран ${sIdx + 1}: ${imgObj.label || 'Скриншот'}`;
+
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
+            currentImgIdx = sIdx;
+            updateActiveScreen(sIdx);
+          });
+          tabsContainer.appendChild(btn);
+          return btn;
+        });
+
+        updateActiveScreen = sIdx => {
+          const targetObj = proj.images[sIdx];
+          imgEl.style.opacity = '0.4';
+          setTimeout(() => {
+            imgEl.src = `./assets/projects/${proj.id}/${targetObj.src}`;
+            imgEl.alt = targetObj.label;
+            imgEl.style.opacity = '1';
+          }, 120);
+
+          buttons.forEach((b, bIdx) => {
+            if (bIdx === sIdx) {
+              b.classList.add('active');
+            } else {
+              b.classList.remove('active');
+            }
+          });
+        };
+
+        visual.appendChild(tabsContainer);
+      }
+
+      card.appendChild(header);
+      card.appendChild(visual);
+      feed.appendChild(card);
     });
-
-    this.activeIndex = 0;
   }
 
   setupMouseFollower() {
@@ -226,7 +219,7 @@ class PortfolioApp {
     requestAnimationFrame(updateMouse);
   }
 
-  onMediaHover(link, isHovering) {
+  onMediaHover(link, isHovering, label = 'View Project ↗') {
     this.mouse.isHovering = isHovering;
     this.mouse.activeLink = link;
     if (isHovering) {
@@ -236,7 +229,7 @@ class PortfolioApp {
     }
     if (this.mouse.el) {
       if (isHovering) {
-        this.mouse.el.textContent = 'View Project ↗';
+        this.mouse.el.textContent = label;
         this.mouse.el.classList.add('show');
       } else {
         this.mouse.el.classList.remove('show');
@@ -273,96 +266,44 @@ class PortfolioApp {
 
   onScroll(scrollY) {
     this.scrollY = scrollY;
-    const windowH = window.innerHeight;
 
     // Header parallax fade out
     const headerLogo = document.getElementById('header-logo');
     const headerWords = document.getElementById('header-words');
 
     if (scrollY > 50) {
-      const factor = Math.min(1, scrollY / 500);
+      const factor = Math.min(1, scrollY / 450);
       const scale = 1 - factor * 0.25;
-      const opacity = Math.max(0, 1 - factor * 2);
+      const opacity = Math.max(0, 1 - factor * 1.8);
       if (headerLogo) {
         headerLogo.style.transform = `translate(-50%, -50%) scale(${scale})`;
         headerLogo.style.opacity = opacity;
+        headerLogo.style.pointerEvents = opacity > 0.05 ? 'all' : 'none';
       }
       if (headerWords) {
         headerWords.style.transform = `translate(-50%, -50%) scale(${scale})`;
         headerWords.style.opacity = opacity;
+        headerWords.style.pointerEvents = opacity > 0.05 ? 'all' : 'none';
       }
     } else {
       if (headerLogo) {
         headerLogo.style.transform = 'translate(-50%, -50%) scale(1)';
         headerLogo.style.opacity = 1;
+        headerLogo.style.pointerEvents = 'all';
       }
       if (headerWords) {
         headerWords.style.transform = 'translate(-50%, -50%) scale(1)';
         headerWords.style.opacity = 1;
+        headerWords.style.pointerEvents = 'none';
       }
-    }
-
-    // Parallax on masks
-    const projects = document.querySelectorAll('#medias .project');
-    let bestIndex = 0;
-    let minDistance = Infinity;
-
-    projects.forEach((projEl, idx) => {
-      const rect = projEl.getBoundingClientRect();
-      const centerY = rect.top + rect.height / 2;
-      const distFromCenter = Math.abs(centerY - windowH * 0.45);
-
-      if (distFromCenter < minDistance) {
-        minDistance = distFromCenter;
-        bestIndex = idx;
-      }
-
-      // Parallax masks with dynamic 3D rotation
-      const masks = projEl.querySelectorAll('.elastic-image');
-      masks.forEach((maskEl, mIdx) => {
-        const speed = parseFloat(maskEl.dataset.speed || '0.3');
-        const offset = (rect.top - windowH * 0.5) * speed * 0.3;
-        const progress = (rect.top - windowH * 0.5) / windowH;
-        const rotY = progress * (mIdx % 2 === 0 ? 12 : -12);
-        const rotX = progress * 7;
-        const rotZ = progress * (mIdx % 2 === 0 ? 3 : -3);
-        const innerMask = maskEl.querySelector('.elastic-image-mask');
-        if (innerMask) {
-          innerMask.style.transform = `translateY(${offset}px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg)`;
-        }
-      });
-    });
-
-    // Update active project info
-    const infoContainer = document.getElementById('projects-info');
-    if (infoContainer) {
-      if (scrollY < 180) {
-        infoContainer.style.opacity = '0';
-        infoContainer.style.pointerEvents = 'none';
-      } else {
-        infoContainer.style.opacity = '1';
-        infoContainer.style.pointerEvents = 'all';
-      }
-    }
-
-    if (bestIndex !== this.activeIndex && bestIndex >= 0) {
-      this.activeIndex = bestIndex;
-      const infoProjects = document.querySelectorAll('#projects-info .project');
-      infoProjects.forEach((p, i) => {
-        if (i === bestIndex) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
-        }
-      });
     }
   }
 
   setupHeaderOrbit() {
     // Interactivity: tilt orbit on mousemove
     window.addEventListener('mousemove', e => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      const x = (e.clientX / window.innerWidth - 0.5) * 16;
+      const y = (e.clientY / window.innerHeight - 0.5) * 16;
       const words = document.getElementById('header-words');
       if (words && this.scrollY < 200) {
         words.style.perspectiveOrigin = `${50 + x}% ${50 + y}%`;
