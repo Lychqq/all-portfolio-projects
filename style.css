@@ -196,31 +196,32 @@ a {
 
 /* Rotating Words in 3D Orbit */
 #header-words {
-  height: 52%;
-  width: 60%;
+  height: 50%;
+  aspect-ratio: 481 / 412;
   max-width: 720px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
-  perspective: 1200px;
-  color: #1e293b;
-  z-index: 15;
+  font-size: 22px;
+  perspective: 10000vw;
+  mix-blend-mode: difference;
+  color: rgb(252, 255, 254);
+  z-index: 99;
   pointer-events: none;
-  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s ease;
 }
 
 #header-words span {
   display: inline-block;
   position: absolute;
   transform-style: preserve-3d;
-  animation: word-rotate 12s infinite linear;
+  animation: word-rotate 10s infinite linear;
   white-space: nowrap;
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
   letter-spacing: 0.04em;
-  opacity: 0.85;
+  color: rgb(252, 255, 254);
 }
 
 #header-words span:nth-child(1) {
@@ -375,11 +376,16 @@ a {
   padding-bottom: 60svh;
 }
 
+body.hover #header-words {
+  opacity: 0.15;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
 /* Fixed Project Info (bottom left) */
 #projects-info {
   position: fixed;
   left: var(--container-margin);
-  bottom: 80px;
+  bottom: 56px;
   z-index: 90;
   pointer-events: none;
   opacity: 0;
@@ -419,10 +425,10 @@ a {
 
 #projects-info .project h1 {
   font-family: 'Young Serif', serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1.2;
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   letter-spacing: -0.01em;
 }
 
@@ -453,13 +459,13 @@ a {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin: 0;
   padding: 0;
   color: #64748b;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 12px;
+  gap: 4px 8px;
 }
 
 #projects-info .project ul li {
@@ -468,11 +474,11 @@ a {
 
 #projects-info .project p {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 11px;
+  line-height: 1.45;
   color: #334155;
-  margin-top: 12px;
-  max-width: 360px;
+  margin-top: 8px;
+  max-width: 320px;
 }
 
 /* Stagger delays for text emergence */

@@ -211,6 +211,11 @@ class PortfolioApp {
   onMediaHover(link, isHovering) {
     this.mouse.isHovering = isHovering;
     this.mouse.activeLink = link;
+    if (isHovering) {
+      document.body.classList.add('hover');
+    } else {
+      document.body.classList.remove('hover');
+    }
     if (this.mouse.el) {
       if (isHovering) {
         this.mouse.el.textContent = 'View Project ↗';
@@ -255,19 +260,18 @@ class PortfolioApp {
     // Header parallax fade out
     const headerLogo = document.getElementById('header-logo');
     const headerWords = document.getElementById('header-words');
-    const nav = document.getElementById('nav');
 
     if (scrollY > 50) {
       const factor = Math.min(1, scrollY / 600);
-      const scale = 1 - factor * 0.25;
-      const opacity = Math.max(0, 1 - factor * 1.5);
+      const scale = 1 - factor * 0.2;
+      const logoOpacity = Math.max(0, 1 - factor * 1.8);
       if (headerLogo) {
         headerLogo.style.transform = `translate(-50%, -50%) scale(${scale})`;
-        headerLogo.style.opacity = opacity;
+        headerLogo.style.opacity = logoOpacity;
       }
       if (headerWords) {
+        // Words retain their difference blend mode and rotate cleanly
         headerWords.style.transform = `translate(-50%, -50%) scale(${scale})`;
-        headerWords.style.opacity = opacity;
       }
     } else {
       if (headerLogo) {
@@ -276,7 +280,6 @@ class PortfolioApp {
       }
       if (headerWords) {
         headerWords.style.transform = 'translate(-50%, -50%) scale(1)';
-        headerWords.style.opacity = 1;
       }
     }
 
